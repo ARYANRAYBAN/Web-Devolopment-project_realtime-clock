@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stylish Clock</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://wavesurfer.xyz/"></script>
+    </head>
+    <body>
+        <div class="container">
+            <img src="ig.jpg">
+            <b><i><em><h1 id="current-time"></h1></em></i></b>
+            <div class="quotes">
+                <b><u><p id="currentDate"></p></u></b>
+                <h2>Time is very precious, use it wisely</h2>
+            </div>
+        </div>
+
+            <audio id="myAudio" loop muted>
+  <source src="relax song.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<button onclick="unmuteAudio()">Play Music</button>
+
+<script>
+  function unmuteAudio() {
+    var audio = document.getElementById("myAudio");
+    audio.muted = false;
+    audio.play();
+  }
+</script>
+
+        <script>
+            let time = document.getElementById("current-time")
+            
+            setInterval(() => {
+                let d = new Date();
+                time.innerHTML = d.toLocaleTimeString();
+            },1000);
+            
+        </script>
+            <script>
+        function updateDate() {
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = now.toLocaleDateString('en-US', options);
+            document.getElementById('currentDate').textContent = formattedDate;
+        }
+
+        // Call the function once to display the date immediately
+        updateDate();
+
+        // Optional: Update the date every second (or at a desired interval)
+        setInterval(updateDate, 1000); // Updates every 1000 milliseconds (1 second)
+    </script>
+    </body>
+</html>
